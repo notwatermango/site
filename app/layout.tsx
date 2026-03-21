@@ -28,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${vt323.variable} ${shareTech.variable}`}>
       <body className="crt vignette antialiased flex flex-col items-center selection:bg-accent selection:text-background">
-        <header className="w-full max-w-4xl p-6 border-b border-primary/30 mb-8 mt-4 z-10 relative">
+        <header className="w-full max-w-4xl p-6 border-b border-primary/30 mb-0 md:mb-8 mt-4 z-10 relative">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <Link href="/" className="hover:text-accent transition-colors">
               <h1
