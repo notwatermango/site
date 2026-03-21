@@ -138,7 +138,8 @@ export default function Home() {
             setInput(e.target.value);
             setCursorPos(e.target.selectionStart || 0);
           }}
-          onSelect={(e) => setCursorPos(e.currentTarget.selectionStart || 0)}
+          onKeyUp={(e) => setCursorPos(e.currentTarget.selectionStart || 0)}
+          onClick={(e) => setCursorPos(e.currentTarget.selectionStart || 0)}
           onKeyDown={handleKeyDown}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
