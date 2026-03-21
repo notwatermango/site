@@ -21,7 +21,7 @@ export default function About() {
           <div className="space-y-10 font-mono text-base md:text-lg">
             <section>
               <h2 className="text-xl md:text-2xl font-heading tracking-widest text-accent border-b border-primary/20 pb-2 mb-4">
-                // SUBJECT PROFILE
+                {"// SUBJECT PROFILE"}
               </h2>
               <p className="leading-relaxed opacity-90">
                 Operating primarily as a Software Engineer. System requirements for peak performance include an 8-hour
@@ -50,7 +50,7 @@ export default function About() {
 
             <section>
               <h2 className="text-xl md:text-2xl font-heading tracking-widest text-accent border-b border-primary/20 pb-2 mb-4">
-                // CORE STACK
+                {"// CORE STACK"}
               </h2>
               <ul className="list-none space-y-2">
                 <li className="flex items-start">
@@ -76,7 +76,7 @@ export default function About() {
 
             <section>
               <h2 className="text-xl md:text-2xl font-heading tracking-widest text-accent border-b border-primary/20 pb-2 mb-4">
-                // TRAITS & DIRECTIVES
+                {"// TRAITS & DIRECTIVES"}
               </h2>
               <p className="leading-relaxed mb-6 opacity-90">
                 Subject has demonstrated an affinity for programming. Currently undergoing cognitive expansion routines
@@ -85,7 +85,9 @@ export default function About() {
                 include music, Steins;Gate, Stardew Valley.
               </p>
               <div className="border-l-2 border-accent pl-5 py-3 bg-background/60 shadow-inner">
-                <p className="italic opacity-90 mb-2">"We are fully responsible for our nature and our choices."</p>
+                <p className="italic opacity-90 mb-2">
+                  &quot;We are fully responsible for our nature and our choices.&quot;
+                </p>
                 <p className="text-sm opacity-60 font-heading tracking-widest uppercase">
                   - Lab Member Motto (derived from existential directives)
                 </p>
@@ -94,7 +96,7 @@ export default function About() {
 
             <section>
               <h2 className="text-xl md:text-2xl font-heading tracking-widest text-accent border-b border-primary/20 pb-2 mb-4">
-                // ANALYSIS
+                {"// ANALYSIS"}
               </h2>
               <p className="leading-relaxed mb-6 opacity-90">
                 Subject has been diagnosed with{" "}

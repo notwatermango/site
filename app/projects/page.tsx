@@ -123,7 +123,7 @@ export default function Portfolio() {
           Projects & Experiments
         </h1>
         <p className="font-mono opacity-70 tracking-widest text-sm md:text-base mb-8">
-          // PUBLIC INVENTIONS AND SCHEMATICS
+          {"// PUBLIC INVENTIONS AND SCHEMATICS"}
         </p>
 
         {/* Divergence Meter Toggle */}
