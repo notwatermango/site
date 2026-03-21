@@ -1,26 +1,104 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-background: #0d0d0d;
+  --color-foreground: #ffb000;
+  --color-primary: #ffb000;
+  --color-accent: #ff4500;
+  --color-danger: #ff0000;
+
+  --font-sans: var(--font-share-tech), monospace;
+  --font-mono: var(--font-share-tech), monospace;
+  --font-heading: var(--font-vt323), monospace;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer base {
+  body {
+    background-color: var(--color-background);
+    color: var(--color-primary);
+    font-family: var(--font-mono);
+    min-height: 100vh;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* CRT Overlay */
+.crt::before {
+  content: " ";
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+    linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  z-index: 50;
+  background-size: 100% 2px, 3px 100%;
+  pointer-events: none;
+}
+
+/* Vignette Curve Simulator */
+.vignette {
+  box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.9);
+  min-height: 100vh;
+}
+
+/* Nixie Tube Glowing Text */
+.nixie-glow {
+  color: var(--color-accent);
+  text-shadow: 0 0 5px var(--color-accent), 0 0 10px var(--color-danger), 0 0 20px var(--color-danger);
+}
+
+/* Markdown Documentation (Prose) Styles */
+.prose h1 {
+  @apply text-4xl md:text-5xl font-heading text-accent tracking-widest mt-12 mb-6 uppercase;
+  text-shadow: 0 0 10px rgba(255, 176, 0, 0.3);
+}
+.prose h2 {
+  @apply text-3xl md:text-4xl font-heading text-accent tracking-widest mt-10 mb-5 uppercase;
+}
+.prose h3 {
+  @apply text-2xl md:text-3xl font-heading text-accent tracking-widest mt-8 mb-4 uppercase;
+}
+.prose h4 {
+  @apply text-xl md:text-2xl font-heading text-accent tracking-widest mt-6 mb-3 uppercase;
+}
+.prose h5 {
+  @apply text-lg md:text-xl font-heading text-accent tracking-widest mt-4 mb-2 uppercase;
+}
+.prose p {
+  @apply mb-6 leading-relaxed opacity-90;
+}
+.prose ul {
+  @apply list-disc list-inside mb-6 font-mono opacity-90;
+}
+.prose ol {
+  @apply list-decimal list-inside mb-6 font-mono opacity-90;
+}
+.prose li {
+  @apply mb-0;
+}
+.prose li p {
+  @apply m-0 inline;
+}
+.prose a {
+  @apply text-primary hover:text-accent underline decoration-primary/50 hover:decoration-accent underline-offset-4 transition-colors;
+}
+.prose strong {
+  @apply font-bold text-accent;
+}
+.prose em {
+  @apply italic text-accent opacity-80;
+}
+.prose blockquote {
+  @apply border-l-2 border-accent pl-5 py-3 my-6 bg-background/60 shadow-inner italic opacity-90;
 }
