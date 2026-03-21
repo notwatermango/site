@@ -67,7 +67,9 @@ export default function RootLayout({
               </a>
             ))}
           </div>
-          <div className="opacity-70">Made with ❤️ for Steins;Gate</div>
+          <div className="opacity-70">
+            &copy; {new Date().getFullYear()} notwatermango. Made with ❤️ for Steins;Gate
+          </div>
         </footer>
       </body>
     </html>
