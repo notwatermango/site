@@ -40,11 +40,17 @@ export default function Home() {
 
   useEffect(() => {
     // 1. Focus immediately on component mount
-    inputRef.current?.focus();
+    if (inputRef.current) {
+      inputRef.current.focus();
+      setIsFocused(true);
+    }
 
     // 2. Focus again after a tiny delay to override tricky React hydration quirks
     const focusTimer = setTimeout(() => {
-      inputRef.current?.focus();
+      if (inputRef.current) {
+        inputRef.current.focus();
+        setIsFocused(true);
+      }
     }, 500);
 
     return () => clearTimeout(focusTimer);
@@ -80,7 +86,12 @@ export default function Home() {
   return (
     <div
       className="flex flex-col items-center justify-center min-h-[60vh] text-center"
-      onClick={() => inputRef.current?.focus()}
+      onClick={() => {
+        if (inputRef.current) {
+          inputRef.current.focus();
+          setIsFocused(true);
+        }
+      }}
     >
       <div className="mb-16">
         <h1 className="text-6xl md:text-8xl font-heading nixie-glow tracking-widest leading-none">1.048596</h1>
