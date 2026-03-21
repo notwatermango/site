@@ -8,7 +8,7 @@ export default function Portfolio() {
   const projects = [
     {
       id: "PROJECT-006",
-      name: "Personal Site",
+      name: "Personal Site (name subject to change)",
       description: "Personal website and blog.",
       link: "https://github.com/notwatermango/site",
       tech: ["TypeScript", "Next.js"],
