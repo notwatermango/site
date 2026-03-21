@@ -39,8 +39,15 @@ export default function Home() {
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    // Focus automatically when component mounts
+    // 1. Focus immediately on component mount
     inputRef.current?.focus();
+
+    // 2. Focus again after a tiny delay to override tricky React hydration quirks
+    const focusTimer = setTimeout(() => {
+      inputRef.current?.focus();
+    }, 500);
+
+    return () => clearTimeout(focusTimer);
   }, []);
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
