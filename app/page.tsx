@@ -18,11 +18,7 @@ function levenshtein(a: string, b: string) {
   return matrix[b.length][a.length];
 }
 
-const TERMINAL_TARGETS = [
-  { word: "about", path: "/about" },
-  { word: "projects", path: "/projects" },
-  { word: "blog", path: "/blog" },
-];
+import { TERMINAL_TARGETS } from "./config";
 
 const MAX_TYPO_TOLERANCE = 2;
 
@@ -37,6 +33,7 @@ const TerminalLine = ({ children }: { children: React.ReactNode }) => (
 
 export default function Home() {
   const [input, setInput] = useState("");
+  const [cursorPos, setCursorPos] = useState(0);
   const [isFocused, setIsFocused] = useState(false);
   const router = useRouter();
   const inputRef = useRef<HTMLInputElement>(null);
@@ -51,18 +48,25 @@ export default function Home() {
 
     const lowerInput = input.toLowerCase().trim();
     let hasMatched = false;
+    let isExternal = false;
 
     for (const target of TERMINAL_TARGETS) {
       if (lowerInput === target.word || levenshtein(lowerInput, target.word) <= MAX_TYPO_TOLERANCE) {
-        router.push(target.path);
+        if (target.isExternal) {
+          isExternal = true;
+          window.open(target.path, "_blank", "noopener,noreferrer");
+        } else {
+          router.push(target.path);
+        }
         hasMatched = true;
         break;
       }
     }
 
-    if (!hasMatched) {
-      // Invalid command, erase terminal text
+    if (!hasMatched || isExternal) {
+      // Invalid command, erase terminal text and reset cursor
       setInput("");
+      setCursorPos(0);
     }
   };
 
@@ -89,24 +93,34 @@ export default function Home() {
           {/* Interactive User Input Line (Hidden on Mobile) */}
           <span className="hidden md:inline">
             <span className="text-accent font-bold mr-2 mt-4">{">"}</span>
-            <span className="relative">
-              <span>{input}</span>
+            <span className="relative whitespace-pre">
+              <span>{input.slice(0, cursorPos)}</span>
               <span
-                className={`animate-pulse inline-block w-3 h-5 align-middle transition-colors ${
+                className={`animate-pulse inline-block border min-w-[0.6em] leading-none text-center transition-colors ${
                   isFocused
-                    ? "bg-primary shadow-[0_0_8px_rgba(255,176,0,0.8)]"
-                    : "border-2 border-primary/50 bg-transparent"
+                    ? "bg-primary border-primary text-background shadow-[0_0_8px_rgba(255,176,0,0.8)]"
+                    : "border-primary/50 bg-transparent text-primary"
                 }`}
-              />
+              >
+                {cursorPos < input.length ? input.charAt(cursorPos) : "\u00A0"}
+              </span>
+              <span>{input.slice(cursorPos + 1)}</span>
+              {!input.length && (
+                <span className="text-primary/0">{' Type your command here "about", "github", etc.'}</span>
+              )}
             </span>
           </span>
         </p>
 
-        {/* Hidden Input field to caputure keystrokes */}
+        {/* Hidden Input field to capture keystrokes */}
         <input
           type="text"
           value={input}
-          onChange={(e) => setInput(e.target.value)}
+          onChange={(e) => {
+            setInput(e.target.value);
+            setCursorPos(e.target.selectionStart || 0);
+          }}
+          onSelect={(e) => setCursorPos(e.currentTarget.selectionStart || 0)}
           onKeyDown={handleKeyDown}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
