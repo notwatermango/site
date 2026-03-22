@@ -85,10 +85,13 @@
   @apply list-decimal list-inside mb-6 font-mono opacity-90;
 }
 .prose li {
-  @apply mb-0;
+  @apply mb-0 wrap-anywhere;
 }
 .prose li p {
   @apply m-0 inline;
+}
+.prose li a {
+  @apply break-all;
 }
 .prose a {
   @apply text-primary hover:text-accent underline decoration-primary/50 hover:decoration-accent underline-offset-4 transition-colors;

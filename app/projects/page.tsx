@@ -227,7 +227,7 @@ export default function Portfolio() {
               </div>
 
               {isArchived && (
-                <div className="z-10 absolute -bottom-6 -right-10 border-2 bg-black/70 border-red-500/50 text-red-500/50 text-xs md:text-sm font-bold uppercase font-mono px-3 py-1 rotate-[-15deg] group-hover:bottom-6 group-hover:right-4 transition-opacity tracking-widest pointer-events-none">
+                <div className="z-10 absolute bottom-0 right-0 md:-bottom-6 md:-right-10 border-2 bg-black/70 border-red-500/50 text-red-500/50 text-xs md:text-sm font-bold uppercase font-mono px-3 py-1 rotate-[-15deg] md:group-hover:bottom-6 md:group-hover:right-4 transition-opacity tracking-widest pointer-events-none">
                   ARCHIVED
                 </div>
               )}
