@@ -9,7 +9,7 @@ export default function Portfolio() {
     {
       id: "PROJECT-006",
       name: "Personal Site (name subject to change)",
-      description: "Personal website and blog.",
+      description: "Personal site and blog.",
       link: "https://github.com/notwatermango/site",
       tech: ["TypeScript", "Next.js"],
       year: 2026,
@@ -119,7 +119,7 @@ export default function Portfolio() {
   return (
     <div className="max-w-5xl mx-auto mt-4">
       <div className="mb-12 text-center">
-        <h1 className="text-4xl md:text-5xl font-heading text-accent uppercase tracking-widest mb-3 text-shadow">
+        <h1 className="text-4xl glitch md:text-5xl font-heading text-accent uppercase tracking-widest mb-3 text-shadow">
           Projects & Experiments
         </h1>
         <p className="font-mono opacity-70 tracking-widest text-sm md:text-base mb-8">

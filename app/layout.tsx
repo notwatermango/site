@@ -17,7 +17,7 @@ const shareTech = Share_Tech_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "notwatermango | Personal Website",
+  title: "notwatermango | Personal Site",
   description: "Personnel File & Blog of notwatermango",
 };
 

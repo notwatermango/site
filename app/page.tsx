@@ -94,7 +94,7 @@ export default function Home() {
       }}
     >
       <div className="mb-16">
-        <h1 className="text-6xl md:text-8xl font-heading nixie-glow tracking-widest leading-none">1.048596</h1>
+        <h1 className="text-6xl md:text-8xl font-heading nixie-glow glitch tracking-widest leading-none">1.048596</h1>
         <p className="font-heading text-xl mt-4 opacity-70 tracking-widest">CURRENT DIVERGENCE</p>
       </div>
 

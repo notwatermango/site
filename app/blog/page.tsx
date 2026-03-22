@@ -7,7 +7,7 @@ export default function DMails() {
   return (
     <div className="max-w-4xl mx-auto mt-4">
       <div className="mb-12 text-center">
-        <h1 className="text-4xl md:text-5xl font-heading text-accent uppercase tracking-widest mb-3 text-shadow">
+        <h1 className="text-4xl glitch md:text-5xl font-heading text-accent uppercase tracking-widest mb-3 text-shadow">
           BLOG
         </h1>
         <p className="font-mono opacity-70 tracking-widest text-sm md:text-base">{"// THOUGHTS & LAB REPORTS"}</p>

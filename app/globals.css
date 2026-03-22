@@ -58,6 +58,67 @@
   text-shadow: 0 0 5px var(--color-accent), 0 0 10px var(--color-danger), 0 0 20px var(--color-danger);
 }
 
+.glitch {
+  animation: nixie-glitch 4s infinite normal;
+}
+
+@keyframes nixie-glitch {
+  0% {
+    opacity: 1;
+    text-shadow: 0 0 5px var(--color-accent), 0 0 10px var(--color-danger), 0 0 20px var(--color-danger);
+  }
+  15% {
+    opacity: 1;
+    text-shadow: 0 0 5px var(--color-accent), 0 0 10px var(--color-danger), 0 0 20px var(--color-danger);
+  }
+  16% {
+    opacity: 0.8;
+    text-shadow: 0 0 2px var(--color-accent);
+    transform: skew(-2deg);
+  }
+  17% {
+    opacity: 1;
+    text-shadow: 0 0 5px var(--color-accent), 0 0 10px var(--color-danger), 0 0 20px var(--color-danger);
+    transform: skew(0deg);
+  }
+  30% {
+    transform: translateX(0);
+  }
+  31% {
+    transform: translateX(-1px);
+  }
+  32% {
+    transform: translateX(1px);
+  }
+  33% {
+    transform: translateX(0);
+  }
+  50% {
+    opacity: 1;
+    text-shadow: 0 0 5px var(--color-accent), 0 0 10px var(--color-danger), 0 0 20px var(--color-danger);
+  }
+  51% {
+    opacity: 0.4;
+    text-shadow: none;
+  }
+  52% {
+    opacity: 1;
+    text-shadow: 0 0 5px var(--color-accent), 0 0 10px var(--color-danger), 0 0 20px var(--color-danger);
+  }
+  53% {
+    opacity: 0.2;
+    text-shadow: none;
+  }
+  55% {
+    opacity: 1;
+    text-shadow: 0 0 5px var(--color-accent), 0 0 10px var(--color-danger), 0 0 20px var(--color-danger);
+  }
+  100% {
+    opacity: 1;
+    text-shadow: 0 0 5px var(--color-accent), 0 0 10px var(--color-danger), 0 0 20px var(--color-danger);
+  }
+}
+
 /* Markdown Documentation (Prose) Styles */
 .prose h1 {
   @apply text-4xl md:text-5xl font-heading text-accent tracking-widest mt-12 mb-6 uppercase;
