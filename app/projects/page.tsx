@@ -16,8 +16,8 @@ export default function Portfolio() {
     },
     {
       id: "PROJECT-005",
-      name: "Split Bill App",
-      description: "Free application for splitting multiple bills and calculating payments.",
+      name: "split.notwatermango.cc",
+      description: "Split multiple bills and share calculated payments.",
       link: "https://github.com/notwatermango/split-bill-app",
       tech: ["TypeScript", "Next.js"],
       year: 2026,
@@ -70,7 +70,7 @@ export default function Portfolio() {
     {
       id: "EXPERIMENT-003",
       name: "Imah Panggung VR",
-      description: "Educative VR simulation of Sundanese traditional house.",
+      description: "Educative Virtual Reality simulation of Sundanese traditional house tour.",
       tech: ["C#", "Vitual Reality", "Meta Quest"],
       link: "https://github.com/notwatermango/imah-panggung-VR",
       year: 2023,
@@ -172,7 +172,7 @@ export default function Portfolio() {
       </div>
 
       <div
-        className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 transition-all duration-200 ${
+        className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 md:gap-8 transition-all duration-200 ${
           isGlitching ? "opacity-30 translate-x-[2px] blur-[1px]" : "opacity-100"
         }`}
       >
