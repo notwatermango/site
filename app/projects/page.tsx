@@ -31,7 +31,7 @@ export default function Portfolio() {
       year: 2025,
     },
     {
-      id: "EXPERIMENT-005",
+      id: "EXPERIMENT-006",
       name: "Financial News Scraper",
       description: "Scrape news from Benzinga.com and sentiment analysis using open-source FinBERT.",
       tech: ["Python", "Playwright", "FinBERT"],
@@ -49,7 +49,7 @@ export default function Portfolio() {
       archived: true,
     },
     {
-      id: "EXPERIMENT-004",
+      id: "EXPERIMENT-005",
       name: "Nekoma: Roguelite Dungeon Game",
       description: "A roguelite challenge game where a brave cat embarks on a quest to rescue his brother.",
       tech: ["Swift", "iOS", "SpriteKit"],
@@ -58,7 +58,7 @@ export default function Portfolio() {
       archived: true,
     },
     {
-      id: "EXPERIMENT-003",
+      id: "EXPERIMENT-004",
       name: "Pixelmon Go",
       description: "A watchOS game to catch and collect pixelmon using a compass directing to a nearby pixelmon.",
       tech: ["Swift", "watchOS", "SwiftUI"],
@@ -67,15 +67,16 @@ export default function Portfolio() {
       archived: true,
     },
     {
-      id: "EXPERIMENT-002",
-      name: "Visualization of employees income in Indonesia",
-      description: "Choropleth map of 'Monthly average income of employees in Indonesia by province' using D3.",
-      tech: ["HTML", "JavaScript", "D3"],
-      link: "https://github.com/notwatermango/choropleth-map-of-average-employee-income-in-indonesia",
+      id: "EXPERIMENT-003",
+      name: "Imah Panggung VR",
+      description: "Educative VR simulation of Sundanese traditional house.",
+      tech: ["C#", "Vitual Reality", "Meta Quest"],
+      link: "https://github.com/notwatermango/imah-panggung-VR",
       year: 2023,
+      archived: true,
     },
     {
-      id: "EXPERIMENT-001",
+      id: "EXPERIMENT-002",
       name: "ngantri-web",
       description:
         "A simple queue-management web app for customers and merchants, built with modern technologies and a serverless-first approach.",
@@ -83,6 +84,14 @@ export default function Portfolio() {
       link: "https://github.com/notwatermango/ngantri-web",
       year: 2023,
       archived: true,
+    },
+    {
+      id: "EXPERIMENT-001",
+      name: "Visualization of employees income in Indonesia",
+      description: "Choropleth map of 'Monthly average income of employees in Indonesia by province' using D3.",
+      tech: ["HTML", "JavaScript", "D3"],
+      link: "https://github.com/notwatermango/choropleth-map-of-average-employee-income-in-indonesia",
+      year: 2023,
     },
     {
       id: "PROJECT-002",
