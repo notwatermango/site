@@ -27,6 +27,7 @@ export default function Portfolio() {
       name: "untoldstudio.id",
       description: "Website for Untold Studio, a photo studio based in Jakarta, Indonesia.",
       link: "https://untoldstudio.id/",
+      skipWrap: true,
       tech: ["TypeScript", "Next.js", "cPanel"],
       year: 2025,
     },
@@ -199,6 +200,7 @@ export default function Portfolio() {
               <h2
                 className={`text-2xl md:text-3xl font-heading tracking-wider mb-2 mt-4 transition-colors ${
                   isExperiment ? "text-gray-300 group-hover:text-white" : "text-primary group-hover:text-accent"
+                } ${p.skipWrap ? "" : "wrap-break-word"}
                 }`}
               >
                 {p.name}
