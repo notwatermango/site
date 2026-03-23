@@ -39,10 +39,13 @@
   left: 0;
   bottom: 0;
   right: 0;
-  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+  background:
+    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
     linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
   z-index: 50;
-  background-size: 100% 2px, 3px 100%;
+  background-size:
+    100% 2px,
+    3px 100%;
   pointer-events: none;
 }
 
@@ -55,21 +58,34 @@
 /* Nixie Tube Glowing Text */
 .nixie-glow {
   color: var(--color-accent);
-  text-shadow: 0 0 5px var(--color-accent), 0 0 10px var(--color-danger), 0 0 20px var(--color-danger);
+  text-shadow:
+    0 0 5px var(--color-accent),
+    0 0 10px var(--color-danger),
+    0 0 20px var(--color-danger);
 }
 
 .glitch {
+  animation: nixie-glitch 5s infinite normal;
+}
+
+.glitch-2 {
   animation: nixie-glitch 4s infinite normal;
 }
 
 @keyframes nixie-glitch {
   0% {
     opacity: 1;
-    text-shadow: 0 0 5px var(--color-accent), 0 0 10px var(--color-danger), 0 0 20px var(--color-danger);
+    text-shadow:
+      0 0 5px var(--color-accent),
+      0 0 10px var(--color-danger),
+      0 0 20px var(--color-danger);
   }
   15% {
     opacity: 1;
-    text-shadow: 0 0 5px var(--color-accent), 0 0 10px var(--color-danger), 0 0 20px var(--color-danger);
+    text-shadow:
+      0 0 5px var(--color-accent),
+      0 0 10px var(--color-danger),
+      0 0 20px var(--color-danger);
   }
   16% {
     opacity: 0.8;
@@ -78,7 +94,10 @@
   }
   17% {
     opacity: 1;
-    text-shadow: 0 0 5px var(--color-accent), 0 0 10px var(--color-danger), 0 0 20px var(--color-danger);
+    text-shadow:
+      0 0 5px var(--color-accent),
+      0 0 10px var(--color-danger),
+      0 0 20px var(--color-danger);
     transform: skew(0deg);
   }
   30% {
@@ -95,7 +114,10 @@
   }
   50% {
     opacity: 1;
-    text-shadow: 0 0 5px var(--color-accent), 0 0 10px var(--color-danger), 0 0 20px var(--color-danger);
+    text-shadow:
+      0 0 5px var(--color-accent),
+      0 0 10px var(--color-danger),
+      0 0 20px var(--color-danger);
   }
   51% {
     opacity: 0.4;
@@ -103,7 +125,10 @@
   }
   52% {
     opacity: 1;
-    text-shadow: 0 0 5px var(--color-accent), 0 0 10px var(--color-danger), 0 0 20px var(--color-danger);
+    text-shadow:
+      0 0 5px var(--color-accent),
+      0 0 10px var(--color-danger),
+      0 0 20px var(--color-danger);
   }
   53% {
     opacity: 0.2;
@@ -111,11 +136,17 @@
   }
   55% {
     opacity: 1;
-    text-shadow: 0 0 5px var(--color-accent), 0 0 10px var(--color-danger), 0 0 20px var(--color-danger);
+    text-shadow:
+      0 0 5px var(--color-accent),
+      0 0 10px var(--color-danger),
+      0 0 20px var(--color-danger);
   }
   100% {
     opacity: 1;
-    text-shadow: 0 0 5px var(--color-accent), 0 0 10px var(--color-danger), 0 0 20px var(--color-danger);
+    text-shadow:
+      0 0 5px var(--color-accent),
+      0 0 10px var(--color-danger),
+      0 0 20px var(--color-danger);
   }
 }
 
