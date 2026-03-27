@@ -197,3 +197,159 @@
 .prose blockquote {
   @apply border-l-2 border-accent pl-5 py-3 my-6 bg-background/60 shadow-inner italic opacity-90;
 }
+
+/* Worldline Shift Overlay */
+.worldline-crt {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1000; /* Ensure it's on top of everything */
+  opacity: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(255, 176, 0, 0.1) 0px,
+    rgba(255, 176, 0, 0.1) 1px,
+    transparent 1px,
+    transparent 5px
+  );
+  transition: opacity 0.8s ease-in-out, backdrop-filter 0.8s ease-in-out;
+  backdrop-filter: blur(0px);
+}
+
+.worldline-flash {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 999;
+  opacity: 0;
+  background: rgb(98, 98, 98);
+  transition: opacity 0.8s ease-in-out;
+}
+
+.worldline-crt.active {
+  opacity: 1;
+  backdrop-filter: blur(1.5px);
+  animation:
+    crt-violent-jitter 0.05s infinite,
+    color-drift 2s infinite linear;
+}
+
+.worldline-flash.active {
+  animation: flash-violent 3s forwards;
+}
+
+@keyframes crt-violent-jitter {
+  0% {
+    transform: translateY(0) skewX(0deg);
+  }
+  25% {
+    transform: translateY(-2px) skewX(2deg);
+    filter: contrast(150%);
+  }
+  50% {
+    transform: translateY(2px) skewX(-2deg);
+    clip-path: inset(10% 0 20% 0);
+  }
+  75% {
+    transform: translateY(-1px) skewX(1deg);
+    filter: hue-rotate(90deg);
+  }
+  100% {
+    transform: translateY(0) skewX(0deg);
+  }
+}
+
+@keyframes flash-violent {
+  0% {
+    opacity: 0;
+    background: var(--color-danger);
+  }
+  2% {
+    opacity: 0.12;
+    background: var(--color-accent);
+  }
+  5% {
+    opacity: 0.04;
+    background: var(--color-danger);
+  }
+  10% {
+    opacity: 0.18;
+    background: var(--color-accent);
+  }
+  15% {
+    opacity: 0.08;
+    background: var(--color-danger);
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes color-drift {
+  0% {
+    filter: hue-rotate(-20deg) contrast(120%) saturate(120%);
+  }
+  50% {
+    filter: hue-rotate(30deg) contrast(180%) saturate(150%);
+  }
+  100% {
+    filter: hue-rotate(-20deg) contrast(120%) saturate(120%);
+  }
+}
+
+/* Make digits look like Nixie tubes during shift */
+.glitch.active {
+  animation: nixie-overload 0.08s infinite !important;
+  color: var(--color-primary) !important;
+  text-shadow:
+    0 0 10px var(--color-primary),
+    0 0 20px var(--color-accent),
+    0 0 40px var(--color-danger),
+    0 0 60px var(--color-danger) !important;
+}
+
+@keyframes nixie-overload {
+  0% {
+    transform: translate(0) scale(1);
+    opacity: 1;
+  }
+  20% {
+    transform: translate(-5px, 2px) scale(1.05);
+    opacity: 0.8;
+  }
+  40% {
+    transform: translate(5px, -2px) scale(0.95);
+  }
+  60% {
+    transform: translate(-2px, -5px) scale(1.1);
+    filter: blur(1px);
+  }
+  80% {
+    transform: translate(2px, 5px) scale(0.9);
+  }
+  100% {
+    transform: translate(0) scale(1);
+  }
+}
+
+.glitch.settling {
+  animation: nixie-settle 2.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  color: var(--color-accent);
+  text-shadow: 
+    0 0 5px var(--color-accent),
+    0 0 10px var(--color-danger),
+    0 0 20px var(--color-danger) !important;
+}
+
+@keyframes nixie-settle {
+  0% {
+    transform: scale(1.1);
+    filter: blur(2px) contrast(150%);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    filter: blur(0) contrast(100%);
+    opacity: 1;
+  }
+}

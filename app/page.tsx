@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { useRouter } from "next/navigation";
 
 // --- UTILS ---
@@ -19,6 +19,7 @@ function levenshtein(a: string, b: string) {
 }
 
 import { TERMINAL_TARGETS } from "./config";
+import { useWorldlineShift } from "@/hooks/useWorldlineShift";
 
 const MAX_TYPO_TOLERANCE = 2;
 
@@ -41,13 +42,19 @@ export default function Home() {
   const [cursorPos, setCursorPos] = useState(0);
   const [isFocused, setIsFocused] = useState(false);
   const [history, setHistory] = useState<HistoryEntry[]>([]);
-  const [divergence, setDivergence] = useState("1.130426");
   const [hasSecretCommand, setHasSecretCommand] = useState(false);
   const [hasValidTerminalCommand, setHasValidTerminalCommand] = useState(false);
   const router = useRouter();
   const inputRef = useRef<HTMLInputElement>(null);
   const hintRef = useRef<HTMLDivElement>(null);
   const terminalContainerRef = useRef<HTMLDivElement>(null);
+  const { divergence, isShifting, isSettling, triggerShift } = useWorldlineShift();
+
+  useEffect(() => {
+    if (isSettling) {
+      setHistory([]);
+    }
+  }, [isSettling]);
 
   useEffect(() => {
     // 1. Focus immediately on component mount
@@ -69,18 +76,10 @@ export default function Home() {
 
   useEffect(() => {
     if (hasSecretCommand) {
-      let iterations = 0;
-      const interval = setInterval(() => {
-        setDivergence((Math.random() * 2).toFixed(6));
-        iterations++;
-        if (iterations >= 40) {
-          clearInterval(interval);
-          setDivergence("1.048596"); // Canonical Steins;Gate worldline
-        }
-      }, 50);
-      return () => clearInterval(interval);
+      triggerShift("1.048596"); // Canonical Steins;Gate worldline
+      setHasSecretCommand(false); // Reset so it can be triggered again
     }
-  }, [hasSecretCommand]);
+  }, [hasSecretCommand, triggerShift]);
 
   useEffect(() => {
     const el = terminalContainerRef.current;
@@ -259,11 +258,20 @@ export default function Home() {
         }
       }}
     >
+      <div className={`worldline-crt ${isShifting && !isSettling ? "active" : ""}`} />
+      <div className={`worldline-flash ${isShifting && !isSettling ? "active" : ""}`} />
+
       <div className="mb-16">
-        <h1 className="text-6xl md:text-8xl font-heading nixie-glow glitch tracking-widest leading-none">
+        <h1
+          className={`text-6xl md:text-8xl font-heading nixie-glow glitch tracking-widest leading-none ${isShifting ? (isSettling ? "settling" : "active") : ""}`}
+        >
           {divergence}
         </h1>
-        <p className="font-heading text-xl mt-4 opacity-70 tracking-widest">CURRENT DIVERGENCE</p>
+        <p
+          className={`font-heading text-xl mt-4 opacity-70 tracking-widest ${isShifting ? (isSettling ? "settling" : "active") : ""}`}
+        >
+          CURRENT DIVERGENCE
+        </p>
       </div>
 
       <div className="max-w-2xl w-full text-left border border-primary/30 p-8 bg-background/80 relative shadow-[0_0_15px_rgba(255,176,0,0.1)] cursor-text">
